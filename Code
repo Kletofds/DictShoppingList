@@ -1,0 +1,44 @@
+##############################################
+# Shopping List
+# Kelton Figurski
+# Shopping list with dictionaries
+##############################################
+
+shoppinglist = {} # creates a dictionary for the shopping list
+totalcost = 0 # sets variable for the total cost
+
+# starts a loop so you can perform multiple actions multiple times
+while True:
+
+    # asks the user what they would like to do to the list
+    action = input("Would you like to add an item, remove an item, or view the list?")
+
+    # adds item and cost to list if user wants and adds to total cost
+    if "add" in action:
+        item = input("What item would you like to add?")
+        cost = input("What is the cost of the item you would like to add? Just type the number (no doller sign)")
+        shoppinglist[item] = (f"${cost}")
+        totalcost = totalcost + int(cost)
+
+    # removes item and cost from list if user wants and subtracts from total cost
+    elif "remove" in action:
+        print(f"Your current list is: {shoppinglist}")
+        removeitem = input("What is the item you would like to remove? Type item exactly (not including cost)")
+        removecost = input("What is the cost of the item you would like to remove? Type cost exactly (not including item) and as a number only (no doller sign)")
+        shoppinglist.pop(removeitem, f"${removeitem}")
+        totalcost = totalcost - int(removecost)
+
+    # prints the shopping list and the total cost if the user wants
+    elif "view" in action:
+        print(shoppinglist)
+        print(f"Your total cost is: ${totalcost}")
+        
+        # ends the program if the user wants
+        cont = input("Would you like to make more changes to the shopping list? Type 'yes' or 'no'")
+        if cont == "no":
+            break
+        
+        
+    # tells user what to type if they type an invalid resonse
+    else:
+        print("Type 'add', 'remove', or 'view'")
